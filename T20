@@ -1,0 +1,84 @@
+float xmole;
+  float ymole;
+  int score = 0;
+  float counter = 0;
+  PImage img;
+  PImage img2;
+  PImage img3;
+  float size=100;
+
+  
+void setup(){
+  size(600,600);
+  xmole=random (0,600);
+  ymole=random (0,600);
+  img = loadImage("mole.png");
+  img2 = loadImage("bg.png");
+  img3 = loadImage("hammer.png");
+  cursor();
+  cursor(img3, 30, 30);
+
+
+
+}
+
+void draw(){
+  background(img2);
+  textSize(20);
+  text("score",0,20);
+  text((score),50,20);
+  image(img,xmole,ymole,size,size);
+  counter=counter+1;
+  if(counter==180){
+  xmole=random (0,600);
+  ymole=random (0,600);
+  counter=0;
+
+
+}
+
+  if(mousePressed && mouseX>xmole-100 && mouseX<xmole+100 && mouseY>ymole-100 && mouseY<ymole+100)
+  
+  {
+  score=score+1;
+  println (score);
+  xmole=random (0,600);
+  ymole=random (0,600);
+  }
+  
+   if(score<20){
+   textSize(25);
+   fill(0,255,0);
+   text("LEVEL 1", 20, 40); 
+   }
+ if(score>=20 && score<40){
+   textSize(25);
+   fill(0);
+   text("LEVEL 2", 20, 40);
+   size=70;
+     if(counter==80){
+  xmole=random (0,600);
+  ymole=random (0,600);
+  counter=0;
+     }
+   }
+    if(score>=40 && score<60){
+  textSize(25);
+   fill(0);
+   text("LEVEL 3", 20, 40);
+   size=40;
+     if(counter==40){
+  xmole=random (0,600);
+  ymole=random (0,600);
+  counter=0;
+     }
+   }
+     if(score>=60){
+   println("GAME OVER");
+   background (0);
+   textSize(85);
+   fill(0,255,0);
+   text("GAME OVER", 50, 300); 
+   noCursor();
+ }
+}
